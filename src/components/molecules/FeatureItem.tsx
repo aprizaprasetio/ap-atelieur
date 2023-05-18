@@ -9,9 +9,12 @@ function FeatureItem(props: FeatureItemType) {
     return (
         <ListItem sx={{
             borderRight: (pathname === props.href) ? 2 : undefined,
-            borderColor: 'primary.main'
+            borderColor: 'primary.main',
+            padding: 0,
         }}>
-            <ListItemButton onClick={(): void => navigate(props.href)}>
+            <ListItemButton onClick={(): void => navigate(props.href)} sx={{
+                paddingX: 3,
+            }}>
                 <ListItemIcon><props.icon /></ListItemIcon>
                 <ListItemText>{props.label}</ListItemText>
             </ListItemButton>

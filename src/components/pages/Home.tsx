@@ -1,38 +1,22 @@
-import { Home as HomeIcon, Paid, ShoppingBag } from '@mui/icons-material'
-import NavbarTop from '../organisms/NavbarTop'
+import { useLocation } from 'react-router-dom'
 import useTrigger from '../../hooks/useTrigger'
+import featureItemsConfig from 'src/config/featureItemsConfig'
+import NavbarTop from '../organisms/NavbarTop'
 import NavbarFeatureWrapper from '../templates/NavbarFeatureWrapper'
-import { FeatureItemType } from 'src/types/component'
 import DrawerAccount from '../organisms/DrawerAccount'
-import PageHome from '../organisms/PageHome'
-
-const featureItems: FeatureItemType[] = [
-    {
-        label: 'Home',
-        href: '/',
-        icon: HomeIcon,
-    },
-    {
-        label: 'Income',
-        href: '/income',
-        icon: Paid,
-    },
-    {
-        label: 'Expenses',
-        href: '/expenses',
-        icon: ShoppingBag,
-    },
-]
 
 function Home(): JSX.Element {
+    const { pathname } = useLocation()
     const [isDrawerAccountVisible, isDrawerAccountVisibleTrigger] = useTrigger({ initialValue: false })
 
     return (
         <>
             <DrawerAccount open={isDrawerAccountVisible} onOpen={isDrawerAccountVisibleTrigger} />
             <NavbarTop avatarOnClick={isDrawerAccountVisibleTrigger} />
-            <NavbarFeatureWrapper items={featureItems}>
-                <PageHome />
+            <NavbarFeatureWrapper items={featureItemsConfig}>
+                {featureItemsConfig.map(item => (
+                    (item.href === pathname) && <item.element key={item.href} />
+                ))}
             </NavbarFeatureWrapper >
         </>
     )

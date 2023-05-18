@@ -1,7 +1,7 @@
 import { useEffect, ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
-import { LinearProgress } from '@mui/material'
 import useAuthStatus from 'src/api/handler/auth/useAuthStatus'
+import LinearLoading from '../molecules/LinearLoading'
 
 function PrivateRoute({ node }: { node: ReactNode }): JSX.Element {
     const authStatus = useAuthStatus()
@@ -10,14 +10,7 @@ function PrivateRoute({ node }: { node: ReactNode }): JSX.Element {
         console.info(authStatus)
     }, [authStatus])
 
-    if (authStatus === 'fetching') return (
-        <LinearProgress sx={{
-            position: 'fixed',
-            width: '100vw',
-            bottom: 0,
-            left: 0,
-        }} />
-    )
+    if (authStatus === 'fetching') return <LinearLoading />
 
     if (authStatus === 'signed-out') return <Navigate to='/sign-in' />
 
