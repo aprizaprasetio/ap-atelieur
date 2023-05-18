@@ -1,12 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom'
-import { ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon } from '@mui/material'
+import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { FeatureItemType } from 'src/types/component'
 
-export interface FeatureItem {
-    label: string,
-    href: string,
-    icon: typeof SvgIcon
-}
-function FeatureItem(props: FeatureItem) {
+function FeatureItem(props: FeatureItemType) {
     const navigate = useNavigate()
     const { pathname } = useLocation()
 

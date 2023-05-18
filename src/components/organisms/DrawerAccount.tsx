@@ -1,20 +1,19 @@
 import { useState, ReactEventHandler, useEffect } from 'react'
 import { SwipeableDrawer, Box, List } from '@mui/material'
 import { AccountCircle, Logout } from '@mui/icons-material'
-import firebase from '../../backend/firebaseConfig'
+import firebaseApp from 'src/api/client/firebaseApp'
 import DrawerAccountItem from '../molecules/DrawerAccountItem'
 
-interface DrawerAccount {
+interface IDrawerAccount {
     open: boolean,
     onOpen: ReactEventHandler,
 }
 
-
-function DrawerAccount({ open, onOpen }: DrawerAccount): JSX.Element {
+function DrawerAccount({ open, onOpen }: IDrawerAccount): JSX.Element {
     const [userName, setUserName] = useState<string | null>(null)
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged((userCredential): void => {
+        firebaseApp.auth().onAuthStateChanged((userCredential): void => {
             setUserName(userCredential?.displayName ?? null)
         })
     }, [])
@@ -34,7 +33,7 @@ function DrawerAccount({ open, onOpen }: DrawerAccount): JSX.Element {
             >
                 <List>
                     <DrawerAccountItem label={userName ?? 'User'} icon={AccountCircle} />
-                    <DrawerAccountItem label={'Sign Out'} icon={Logout} onClick={() => firebase.auth().signOut()} />
+                    <DrawerAccountItem label={'Sign Out'} icon={Logout} onClick={() => firebaseApp.auth().signOut()} />
                 </List>
             </Box>
         </SwipeableDrawer>

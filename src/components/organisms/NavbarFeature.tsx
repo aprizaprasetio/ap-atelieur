@@ -1,8 +1,12 @@
-import FeatureItem, { FeatureItem as FeatureItemType } from '../molecules/FeatureItem'
-import { Drawer, Toolbar }
-    from '@mui/material'
+import { Drawer, Toolbar } from '@mui/material'
+import FeatureItem from '../molecules/FeatureItem'
+import { FeatureItemType } from 'src/types/component'
 
-function NavbarFeature({ items }: { items: FeatureItemType[] }): JSX.Element {
+interface INavbarFeature {
+    items: FeatureItemType[],
+}
+
+function NavbarFeature({ items }: INavbarFeature): JSX.Element {
     return (
         <Drawer
             variant='permanent'

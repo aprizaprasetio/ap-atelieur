@@ -1,7 +1,7 @@
 import { useEffect, ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
 import { LinearProgress } from '@mui/material'
-import { useAuthStatus } from '../../hooks/authentication'
+import useAuthStatus from 'src/api/handler/auth/useAuthStatus'
 
 function GuestRoute({ node }: { node: ReactNode }): JSX.Element {
     const authStatus = useAuthStatus()

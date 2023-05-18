@@ -1,6 +1,10 @@
 import { useState, ChangeEvent } from 'react'
 
-function useInput(initialValue: string = ''): any[] {
+export interface IUseInput<TInitial> {
+    initialValue: TInitial,
+}
+
+function useInput({ initialValue }: IUseInput<string>): any[] {
     const [value, setValue] = useState<string>(initialValue)
 
     function valueHandler(e: ChangeEvent<HTMLInputElement>): void {
@@ -10,6 +14,4 @@ function useInput(initialValue: string = ''): any[] {
     return [value, valueHandler]
 }
 
-export {
-    useInput,
-}
+export default useInput

@@ -1,0 +1,5 @@
+export { default as ReactIcon } from './images/react.svg'
+export { default as AtelieurLogoLight } from './images/atelieur-logo-light.png'
+export { default as AtelieurLogoDark } from './images/atelieur-logo-dark.png'
+export { default as HomeBanner } from './images/home-banner.png'
+export { default as BentoCake } from './images/landing-page-bento.webp'

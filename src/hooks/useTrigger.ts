@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { IUseInput } from './useInput'
 
-function useTrigger(initialValue: boolean = false): any[] {
+function useTrigger({ initialValue }: IUseInput<boolean>): any[] {
     const [value, setValue] = useState<boolean>(initialValue)
 
     function valueTrigger(): void {
@@ -10,6 +11,4 @@ function useTrigger(initialValue: boolean = false): any[] {
     return [value, valueTrigger]
 }
 
-export {
-    useTrigger,
-}
+export default useTrigger

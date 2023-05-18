@@ -2,14 +2,14 @@ import { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon } from '@mui/material'
 
-interface drawerAccountItem {
+interface IDrawerAccountItem {
     icon: typeof SvgIcon,
     label: string,
     onClick?: (e: MouseEvent<HTMLDivElement>) => void,
     href?: string,
 }
 
-function DrawerAccountItem(props: drawerAccountItem): JSX.Element {
+function DrawerAccountItem(props: IDrawerAccountItem): JSX.Element {
     if (props.href === undefined && props.onClick === undefined)
         return (
             <ListItemButton disabled>

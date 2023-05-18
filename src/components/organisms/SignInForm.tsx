@@ -1,18 +1,18 @@
 import { Box, Card, CardMedia, CardContent, CardActions, TextField, Typography, Button, IconButton, InputAdornment } from '@mui/material'
 import { Email, Key, Visibility, VisibilityOff } from '@mui/icons-material'
-import { useInput } from '../../hooks/form'
-import { useTrigger } from '../../hooks/ui'
-import { useAuth } from '../../hooks/authentication'
-import bentoCake from '../../assets/landing-page-bento.webp'
+import useInput from 'src/hooks/useInput'
+import useTrigger from 'src/hooks/useTrigger'
+import useAuth from 'src/api/handler/auth/useAuth'
+import { BentoCake } from 'src/assets'
 import IconInputAdornment from '../molecules/IconInputAdornment'
 
 function SignInForm(): JSX.Element {
-    const [isPasswordVisible, isPasswordVisibleTrigger] = useTrigger()
+    const [isPasswordVisible, isPasswordVisibleTrigger] = useTrigger({ initialValue: false })
 
-    const [email, emailHandler] = useInput()
-    const [password, passwordHandler] = useInput()
+    const [email, emailHandler] = useInput({ initialValue: '' })
+    const [password, passwordHandler] = useInput({ initialValue: '' })
 
-    const { errorMessage, signInHandler } = useAuth(email, password)
+    const { errorMessage, signInHandler } = useAuth({ email, password })
 
     return (
         <Card onSubmit={signInHandler} component='form' sx={{
@@ -22,7 +22,7 @@ function SignInForm(): JSX.Element {
                 lg: '25%',
             },
         }}>
-            <CardMedia component='img' image={bentoCake} />
+            <CardMedia component='img' image={BentoCake} />
             <Box padding={1} color={errorMessage ? 'error.main' : 'primary.main'}>
                 <Typography fontWeight='light' textAlign='center'>
                     {errorMessage ?? 'Welcome to Atelieur Management Web App.'}

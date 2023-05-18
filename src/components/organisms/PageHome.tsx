@@ -1,5 +1,5 @@
-import { Card, CardMedia, Paper, Typography } from '@mui/material'
-import HomeBanner from '../../assets/home-banner.png'
+import { Card, CardMedia } from '@mui/material'
+import { HomeBanner } from 'src/assets'
 
 function PageHome() {
     return (

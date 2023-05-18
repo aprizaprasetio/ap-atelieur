@@ -1,13 +1,12 @@
 import { Box, Chip, Stack, Typography } from '@mui/material'
-import AtelieurLogoLight from '../../assets/atelieur-logo-light.png'
-import AtelieurLogoDark from '../../assets/atelieur-logo-dark.png'
+import { AtelieurLogoLight, AtelieurLogoDark } from 'src/assets'
 
-interface AtelieurBrand {
+interface IAtelieurBrand {
     disableLogo?: boolean,
     disableLightLogo?: boolean,
 }
 
-function AtelieurBrand(props: AtelieurBrand): JSX.Element {
+function AtelieurBrand(props: IAtelieurBrand): JSX.Element {
     return (
         <Stack direction='row' spacing={1} justifyContent='center' alignItems='center'>
             {props.disableLogo ? (
